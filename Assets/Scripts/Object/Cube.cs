@@ -16,8 +16,8 @@ public class Cube : PoolableObject<Cube>, ISpawner<Cube>
     {
         if (IsThereCollision == false)
         {
-            if (TryGetComponent(out Platform platform))
-            {            
+            if (collider.TryGetComponent(out Platform platform))
+            {
                 StartCoroutine(DecreaseLifeTime());
                 ChangeColor();
                 IsThereCollision = true;

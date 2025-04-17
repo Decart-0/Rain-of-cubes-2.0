@@ -13,6 +13,11 @@ public abstract class PoolableObject<T> : MonoBehaviour where T : MonoBehaviour,
 
     public int LifeTime { get; protected set; }
 
+    private void Awake()
+    {
+        OnAwake();
+    }
+
     public virtual void Init()
     {
         int minTime = 5;
@@ -22,9 +27,9 @@ public abstract class PoolableObject<T> : MonoBehaviour where T : MonoBehaviour,
         Renderer.material.color = _defaultColor;
     }
 
-    protected void OnAwake()
-    {
-        Renderer = GetComponent<Renderer>();
+    protected virtual void OnAwake() 
+    { 
+        Renderer = GetComponent<Renderer>(); 
     }
 
     protected void NotifyLifeTimeExpired()
